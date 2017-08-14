@@ -41,7 +41,7 @@ add_filter( 'wc_customer_order_xml_export_suite_orders_xml_data', 'rf_custom_xml
 function rf_custom_xml_data( $xml_array, $orders ){
 	$xml_array = array( 'RequestBatch' => array ( 
 										'@attributes' => array( 
-															'ConsumerKey' => 'BOSCHWEBSVH',
+															'ConsumerKey' => 'BOSCHWEBSV',
 															'Password' => 'BOSCH$14'
 														), 
 										
@@ -82,7 +82,7 @@ function rf_custom_xml_order_data( $order_data, $order ){
 									'CustomerName' => $order->get_formatted_billing_full_name(),
 									'CustomerNumber' => 'BMBOSCHMIX',
 									'PoNumber' => $order->get_order_number(),
-									'RequestedShipDate' => '',
+									'RequestedShipDate' => date('Y-m-d', strtotime($order->order_date) ),
 									'ReviewOrderHold' => 'S',
 									'ShipToAddress1' => SV_WC_Order_Compatibility::get_prop( $order, 'shipping_address_1' ),
 									'ShipToAddress2' => SV_WC_Order_Compatibility::get_prop( $order, 'shipping_address_2' ),
